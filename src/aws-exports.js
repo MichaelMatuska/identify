@@ -35,6 +35,15 @@ const awsmobile = {
                     "targetLanguage": "zh"
                 }
             }
+        },
+        "identify": {
+            "identifyLabels": {
+                "proxy": false,
+                "region": "us-east-1",
+                "defaults": {
+                    "type": "LABELS"
+                }
+            }
         }
     }
 };

@@ -31,6 +31,12 @@
       "providerPlugin": "awscloudformation",
       "service": "Translate",
       "convertType": "translateText"
+    },
+    "identifyLabels62e0c08d": {
+      "providerPlugin": "awscloudformation",
+      "service": "Rekognition",
+      "dependsOn": [],
+      "identifyType": "identifyLabels"
     }
   }
 }
