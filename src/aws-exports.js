@@ -37,6 +37,23 @@ const awsmobile = {
                     "collectionId": "identifyentities-staging",
                     "maxEntities": 1
                 }
+            },
+            "identifyLabels": {
+                "proxy": false,
+                "region": "us-east-1",
+                "defaults": {
+                    "type": "ALL"
+                }
+            }
+        },
+        "convert": {
+            "translateText": {
+                "region": "us-east-1",
+                "proxy": false,
+                "defaults": {
+                    "sourceLanguage": "en",
+                    "targetLanguage": "zh"
+                }
             }
         }
     }
