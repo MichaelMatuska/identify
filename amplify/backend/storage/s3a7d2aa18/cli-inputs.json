@@ -1,0 +1,34 @@
+{
+  "resourceName": "s3a7d2aa18",
+  "policyUUID": "a7d2aa18",
+  "bucketName": "identifyab813ba133d049dc8e170126079fe7ee",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {},
+  "adminTriggerFunction": {
+    "tag": "adminTriggerFunction",
+    "category": "predictions",
+    "permissions": [
+      "CREATE_AND_UPDATE",
+      "READ",
+      "DELETE"
+    ],
+    "triggerFunction": "RekognitionIndexFacesTriggerfbe9f406",
+    "triggerEvents": [
+      "s3:ObjectCreated:*",
+      "s3:ObjectRemoved:*"
+    ],
+    "triggerPrefix": [
+      {
+        "prefix": "protected/predictions/index-faces/",
+        "prefixTransform": "NONE"
+      }
+    ]
+  }
+}

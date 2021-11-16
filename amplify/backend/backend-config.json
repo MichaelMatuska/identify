@@ -24,5 +24,79 @@
         ]
       }
     }
+  },
+  "storage": {
+    "s3a7d2aa18": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "RekognitionIndexFacesTriggerfbe9f406",
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ]
+        }
+      ]
+    }
+  },
+  "api": {
+    "identify": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "apiKeyExpirationDate": "2022-11-16T18:31:06.064Z",
+              "description": "apiKey"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        }
+      }
+    }
+  },
+  "predictions": {
+    "identifyLabels99b9901d": {
+      "providerPlugin": "awscloudformation",
+      "service": "Rekognition",
+      "dependsOn": [],
+      "identifyType": "identifyLabels"
+    },
+    "identifyEntities1562bab4": {
+      "providerPlugin": "awscloudformation",
+      "service": "Rekognition",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "RekognitionIndexFacesTriggerfbe9f406",
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "s3a7d2aa18",
+          "attributes": [
+            "BucketName"
+          ]
+        }
+      ],
+      "identifyType": "identifyEntities"
+    }
+  },
+  "function": {
+    "RekognitionIndexFacesTriggerfbe9f406": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true
+    }
   }
 }

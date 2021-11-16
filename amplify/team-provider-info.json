@@ -13,7 +13,14 @@
     },
     "categories": {
       "auth": {
-        "identify472aad56": {}
+        "identify472aad56": {},
+        "true": {}
+      },
+      "function": {
+        "RekognitionIndexFacesTriggerfbe9f406": {
+          "deploymentBucketName": "amplify-identify-dev-102835-deployment",
+          "s3Key": "amplify-builds/RekognitionIndexFacesTriggerfbe9f406-5161577155454b686537-build.zip"
+        }
       }
     }
   }
