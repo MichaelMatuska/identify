@@ -1,14 +1,13 @@
 {
   "auth": {
-    "identify5c5e698f": {
+    "identify472aad56": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
-        "loginMechanisms": [
-          "PREFERRED_USERNAME"
-        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
         "signupAttributes": [
           "EMAIL"
         ],
@@ -24,19 +23,6 @@
           "EMAIL"
         ]
       }
-    }
-  },
-  "predictions": {
-    "translateText8516b0ea": {
-      "providerPlugin": "awscloudformation",
-      "service": "Translate",
-      "convertType": "translateText"
-    },
-    "identifyLabels62e0c08d": {
-      "providerPlugin": "awscloudformation",
-      "service": "Rekognition",
-      "dependsOn": [],
-      "identifyType": "identifyLabels"
     }
   }
 }
