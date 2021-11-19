@@ -19,6 +19,7 @@ export const syncNotes = /* GraphQL */ `
         name
         description
         image
+        conf
         _version
         _deleted
         _lastChangedAt
@@ -37,6 +38,7 @@ export const getNote = /* GraphQL */ `
       name
       description
       image
+      conf
       _version
       _deleted
       _lastChangedAt
@@ -57,6 +59,7 @@ export const listNotes = /* GraphQL */ `
         name
         description
         image
+        conf
         _version
         _deleted
         _lastChangedAt

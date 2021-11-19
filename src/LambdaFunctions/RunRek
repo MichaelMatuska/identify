@@ -1,0 +1,66 @@
+import json
+import os
+import boto3
+import logging
+import string
+import random
+import urllib.parse
+from botocore.exceptions import ClientError
+
+
+def lambda_handler(event, context):
+    # Create s3 client
+    s3_client = boto3.client('s3')
+    #  Create Rekognition Client
+    client = boto3.client('rekognition')
+    model_arn = 'arn:aws:rekognition:us-east-1:027366645575:project/MatuskaAB/version/MatuskaAB.2021-10-29T11.09.22/1635520162325'
+
+    # Get the object from the event and show its content type
+    bucket = event['Records'][0]['s3']['bucket']['name']
+    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
+    print(key)   
+    
+    response = client.detect_custom_labels(
+        ProjectVersionArn = model_arn,
+        Image={
+            'S3Object': {
+                'Bucket': bucket, 
+                'Name': key}
+            },
+        MinConfidence = 80
+        )
+    # Get the custom labels
+    labels = response['CustomLabels']
+    #write image to final bucket and delete from incoming bucket
+    s3 = boto3.resource('s3')
+    finalbucket = 'matuskademo-dst'
+    copy_source = {
+        'Bucket': bucket,
+        'Key': key
+    }
+    random_letters = ''.join(random.choice(string.ascii_letters) for i in range(10))
+    put_image_name = random_letters+'-'+key
+    s3.meta.client.copy(copy_source, finalbucket, put_image_name)
+
+    # Dump json file with label data in final bucket
+    json_object = json.dumps(labels)
+    
+    if not dynamodb:
+        dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('Images')
+    print("Adding image details:", labels)
+    table.put_item(Item=labels)
+    print("Success!!")
+
+    s3_client.put_object(
+        Body = str(json_object),
+        Bucket = finalbucket,
+        Key = put_image_name+'.json'
+    )
+
+    # Delete file from incoming s3
+    s3_client.delete_object(
+    Bucket = bucket,
+    Key = key
+    )
+    print('Copied' + key)

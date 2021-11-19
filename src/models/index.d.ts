@@ -13,6 +13,7 @@ export declare class Note {
   readonly name: string;
   readonly description?: string;
   readonly image?: string;
+  readonly conf?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Note, NoteMetaData>);

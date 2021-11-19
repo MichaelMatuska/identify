@@ -12,7 +12,7 @@ import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
 Amplify.addPluggable(new AmazonAIPredictionsProvider());
 
-const initialFormState = { name: '', description: '' }
+const initialFormState = { name: '', description: '', conf: '' }
 
 function TextIdentification() {
   const [response, setResponse] = useState("Gather information from uploading an image...powered by ML! ")
@@ -199,13 +199,18 @@ function App() {
        
       <input
         onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-        placeholder="Ticket ID"
+        placeholder="Name:"
         value={formData.name}
       />   
        <input
         onChange={e => setFormData({ ...formData, 'description': e.target.value})}
         placeholder="Ticket Notes"
         value={formData.description}
+      />
+      <input
+        onChange={e => setFormData({ ...formData, 'conf': e.target.value})}
+        placeholder="Confidence Score:"
+        value={formData.conf}
       />
       <input
         type="file"
@@ -215,17 +220,15 @@ function App() {
       <br/>
       <EntityIdentification />
       <br/>
-      <TextIdentification />
-      <br/>
-      Identify Entities (Advanced)
       <PredictionsUpload />
       <br/>
       <div style={{marginBottom: 30}}>
       {
         notes.map(note => (
           <div key={note.id || note.name}>
-            <h2>{note.name}</h2>
-            <p>{note.description}</p>
+            <h2>First Name: {note.name}</h2>
+            <p>Last Name: {note.description}</p>
+            <p>Confidence Score: {note.conf}</p>
             <button onClick={() => deleteNote(note)}>Delete Ticket Notes</button>
             {
               note.image && <img src={note.image} style={{width: 400}} />
