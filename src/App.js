@@ -164,6 +164,7 @@ function App() {
       </div>
     );
   }
+  
   function PredictionsUpload() {
     /* This is Identify Entities Advanced feature
      * This will upload user images to the appropriate bucket prefix
@@ -172,12 +173,8 @@ function App() {
     function upload(event) {
       const { target: { files } } = event;
       const [file,] = files || [];
-      Storage.put(file.name, file, {
-        level: 'protected',
-        customPrefix: {
-          protected: 'protected/predictions/index-faces/',
-        }
-      });
+      Storage.put(file.name, file);
+      
     }
   
     return (
