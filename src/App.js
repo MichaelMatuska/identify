@@ -173,8 +173,12 @@ function App() {
     function upload(event) {
       const { target: { files } } = event;
       const [file,] = files || [];
-      Storage.put(file.name, file);
-      
+      Storage.put(file.name, file, {
+        level: 'public',
+        customPrefix: {
+          protected: 'public/',
+        }
+      });
     }
   
     return (
