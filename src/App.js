@@ -33,7 +33,7 @@ function PredictionsUpload() {
   return (
     <div className="Text">
       <div>
-        <h3>Upload to predictions s3</h3>
+        <h2>Intelligent Image Dectection - Upload Here!</h2>
         <input type="file" onChange={upload}></input>
       </div>
     </div>
@@ -89,16 +89,16 @@ function App() {
   
   return (
     <div className="App">
-      <h1>City of Octank - Police Department</h1>
-      <h2>Ticketing and Document Managment</h2>
+      <h1>Octank - Target Identification Department!</h1>
+      <h2>Image Identifcation </h2>
       <input
         onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-        placeholder="Name:"
+        placeholder="Target ID:"
         value={formData.name}
       />   
        <input
         onChange={e => setFormData({ ...formData, 'description': e.target.value})}
-        placeholder="Ticket Notes"
+        placeholder="Description:"
         value={formData.description}
       />
       <input
@@ -110,18 +110,20 @@ function App() {
         type="file"
         onChange={onChange}
       />
-      <button onClick={createNote}>Modify Ticket</button>
+      <button onClick={createNote}>Add New Identification</button>
+      <br/>
       <br/>
       <PredictionsUpload />
       <br/>
+      <h1> Images for Review </h1>
       <div style={{marginBottom: 30}}>
       {
         notes.map(note => (
           <div key={note.id || note.name}>
-            <h2>First Name: {note.name}</h2>
-            <p>Last Name: {note.description}</p>
+            <h2>ID/Name: {note.name}</h2>
+            <p>Description: {note.description}</p>
             <p>Confidence Score: {note.conf}</p>
-            <button onClick={() => deleteNote(note)}>Delete Ticket Notes</button>
+            <button onClick={() => deleteNote(note)}>Remove Item</button>
             {
               note.image && <img src={note.image} style={{width: 400}} alt=" " />
             }

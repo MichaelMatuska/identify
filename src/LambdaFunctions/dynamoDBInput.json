@@ -1,0 +1,32 @@
+{
+    "id": {
+      "S": "1da65d40-bff6-4961-9498-ed633d68c91c"
+    },
+    "__typename": {
+      "S": "Note"
+    },
+    "_lastChangedAt": {
+      "N": "1637164079085"
+    },
+    "_version": {
+      "N": "1"
+    },
+    "image": {
+      "S": "220px-Michael_Jordan_in_2014.jpg"
+    },
+    "updatedAt": {
+      "S": "2021-11-17T15:47:59.061Z"
+    },
+    "createdAt": {
+      "S": "2021-11-17T15:47:59.061Z"
+    },
+    "conf": {
+      "N": "100000"
+    },
+    "description": {
+      "S": "ADDED TEST "
+    },
+    "name": {
+      "S": "TEST "
+    }
+  }

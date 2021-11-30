@@ -1,22 +1,36 @@
 .App {
   text-align: center;
-  background-color: #a3a2a8;
-  
+  background-color: #3d4c41;
+  border: 1px dotted black;
+}
+
+input{
+  width: 20%;
+  margin: 5px;
 }
 
 body {
-  background-color: lightgrey;
-  color: blue;
+  background-color: #999999;
+  color: #ffd55a;
 }
 
 h1 {
-  background-color: black;
+  background-color: #c0904d;
   color: black;
+  border: 1px dotted black;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 div {
-  background-color: rgb(119, 117, 117);
-  color: white;
+  background-color: #3d4c41;
+  color: #c0904d;
+  border:3px dotted black;
+  padding-bottom: 75px; 
+  padding-top: 10px;
+  padding-right: 30px;
+  padding-left: 50px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 .App-logo {
@@ -31,7 +45,7 @@ div {
 }
 
 .App-header {
-  background-color: rgb(119, 117, 117);
+  background-color: rgb(241, 92, 92);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
